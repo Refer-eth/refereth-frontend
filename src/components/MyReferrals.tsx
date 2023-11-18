@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ButtonOutline from '@/components/ButtonOutline';
 import { FlexCenter } from '@/components/styled-components/Flex';
 import Image from 'next/image';
+import ProgressIndicator from '@/components/ProgressIndicator';
 
 const MyReferrals = () => {
 	return (
@@ -36,6 +37,7 @@ const MyReferrals = () => {
 					</tbody>
 				</StyledTable>
 				<Accepted>
+					<ProgressIndicator progress={30} />
 					<Next>
 						<div>Next</div>
 						<Image
@@ -64,6 +66,7 @@ const StyledTable = styled.table`
 	border-collapse: collapse;
 	border-radius: 8px;
 	overflow: hidden;
+	max-width: 736px;
 `;
 
 const TableHeader = styled.thead`
@@ -132,6 +135,7 @@ const Next = styled(FlexCenter)`
 	justify-content: space-between;
 	width: 167px;
 	margin-bottom: 16px;
+	margin-top: 40px;
 	> * {
 		flex-shrink: 0;
 	}
