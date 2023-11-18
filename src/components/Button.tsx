@@ -19,6 +19,7 @@ const Wrapper = styled(FlexCenter)`
 	color: white;
 	gap: 8px;
 	cursor: pointer;
+	width: fit-content;
 `;
 
 export default Button;
