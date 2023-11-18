@@ -2,11 +2,11 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { FlexCenter } from '@/components/styled-components/Flex';
 
-const Button = (props: { text: string; icon: string }) => {
+const Button = (props: { text: string; icon?: string }) => {
 	const { text, icon } = props;
 	return (
 		<Wrapper>
-			<Image src={icon} alt='copy' width={18} height={18} />
+			{icon && <Image src={icon} alt='copy' width={18} height={18} />}
 			{text}
 		</Wrapper>
 	);

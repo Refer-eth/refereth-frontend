@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useAccount, useBalance, useNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import { shortenAddress } from '@/utils/helpers';
 import { usePathname } from 'next/navigation';
 
@@ -10,7 +10,6 @@ const Header = () => {
 	const { open: openConnectModal } = useWeb3Modal();
 	const { address } = useAccount();
 	const { chain } = useNetwork();
-	const { data } = useBalance({ address });
 	const handleConnect = () => {
 		openConnectModal && openConnectModal();
 	};
@@ -40,20 +39,15 @@ const Header = () => {
 				<Menu>How it works</Menu>
 			</Menus>
 			{address && chain?.id ? (
-				<Account>
-					<div>
-						{data?.formatted?.slice(0, 6)} {data?.symbol}
-					</div>
-					<Address onClick={handleConnect}>
-						<Image
-							width={24}
-							height={24}
-							src='/images/avatar.png'
-							alt='avatar'
-						/>
-						{shortenAddress(address)}
-					</Address>
-				</Account>
+				<Address onClick={handleConnect}>
+					<Image
+						width={24}
+						height={24}
+						src='/images/avatar.png'
+						alt='avatar'
+					/>
+					{shortenAddress(address)}
+				</Address>
 			) : (
 				<ConnectWallet onClick={handleConnect}>
 					Connect Wallet
@@ -63,19 +57,13 @@ const Header = () => {
 	);
 };
 
-const Account = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 16px;
+const Address = styled.div`
 	color: #ff4757;
 	font-family:
 		Founders Grotesk,
 		sans-serif;
 	font-size: 20px;
 	font-weight: 600;
-`;
-
-const Address = styled.div`
 	border-radius: 100px;
 	border: 2px solid #ff4757;
 	padding: 13px 24px;
