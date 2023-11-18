@@ -1,0 +1,36 @@
+{
+  "name": "web3-kick-starting",
+  "version": "0.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .ts --ext .tsx",
+    "lint:fix": "eslint . --ext .ts --ext .tsx --fix"
+  },
+  "dependencies": {
+    "@web3modal/wagmi": "^3.3.2",
+    "next": "^14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.1",
+    "viem": "^1.19.3",
+    "wagmi": "^1.4.7",
+    "walletconnect": "^1.7.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.2",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.2.2"
+  }
+}
