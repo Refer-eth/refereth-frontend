@@ -14,23 +14,27 @@ const MyReferrals = () => {
 				</FlexCenterStyled>
 			</My>
 			<Hr />
-			<FlexCenter gap='64px'>
-				<Table>
-					<HeadRow>
-						<Th>Top Invitees</Th>
-						<Th>Points earned</Th>
-						<Th># of transactions</Th>
-					</HeadRow>
-					{data.map(item => {
-						return (
-							<Tr key={item.address}>
-								<Td>{item.address}</Td>
-								<Td>{item.points}</Td>
-								<Td>{item.noOfTransactions}</Td>
-							</Tr>
-						);
-					})}
-				</Table>
+			<Middle gap='64px'>
+				<StyledTable>
+					<TableHeader>
+						<TableRow>
+							<TableHeadCell>Top Invitee</TableHeadCell>
+							<TableHeadCell>Points Earned</TableHeadCell>
+							<TableHeadCell># of Transactions</TableHeadCell>
+						</TableRow>
+					</TableHeader>
+					<tbody>
+						{data.map((invitee, index) => (
+							<TableRow key={index}>
+								<TableCell>{invitee.address}</TableCell>
+								<TableCell>{invitee.points}</TableCell>
+								<TableCell>
+									{invitee.noOfTransactions}
+								</TableCell>
+							</TableRow>
+						))}
+					</tbody>
+				</StyledTable>
 				<Accepted>
 					<Next>
 						<div>Next</div>
@@ -48,19 +52,76 @@ const MyReferrals = () => {
 						<span>Accepted Invites</span>
 					</AccInvites>
 				</Accepted>
-			</FlexCenter>
+			</Middle>
 			<Hr />
 			<ButtonOutline title='Check My Invitees History' />
 		</Wrapper>
 	);
 };
 
-const AccInvites = styled.div``;
+const StyledTable = styled.table`
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 8px;
+	overflow: hidden;
+`;
+
+const TableHeader = styled.thead`
+	background-color: #4caf50;
+`;
+
+const TableRow = styled.tr`
+	&:nth-child(odd) {
+		background-color: #f9f9f9;
+	}
+	&:nth-child(even) {
+		background-color: #e8e8e8;
+	}
+`;
+
+const TableCell = styled.td`
+	color: #747d8c;
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+`;
+
+const TableHeadCell = styled.th`
+	padding: 12px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+	background-color: #e3e8f1;
+	color: #747d8c;
+`;
+
+const Middle = styled(FlexCenter)`
+	justify-content: space-between;
+`;
+
+const AccInvites = styled.div`
+	display: flex;
+	gap: 30px;
+	> span:first-child {
+		color: #2f3542;
+		font-feature-settings: 'liga' off;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 900;
+		line-height: normal;
+	}
+	> span:last-child {
+		color: #2f3542;
+		font-feature-settings: 'liga' off;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+	}
+`;
 
 const You = styled.div`
 	margin-bottom: 40px;
 	color: #747d8c;
-	text-align: center;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
@@ -130,36 +191,6 @@ const FlexCenterStyled = styled(FlexCenter)`
 	gap: 8px;
 `;
 
-const Tr = styled.tr`
-	margin: 10px 0;
-	height: 37px;
-`;
-
-const Td = styled.td`
-	color: #747d8c;
-	margin: 10px 0;
-`;
-
-const Th = styled.th`
-	color: #747d8c;
-`;
-
-const HeadRow = styled.tr`
-	border-radius: 4px;
-	background: #e3e8f1;
-	color: #747d8c;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: normal;
-	padding: 10px 32px;
-	height: 37px;
-`;
-
-const Table = styled.table`
-	text-align: center;
-`;
-
 const My = styled.div`
 	color: #747d8c;
 	font-size: 14px;
@@ -182,6 +213,7 @@ const Wrapper = styled.div`
 	border-radius: 24px;
 	background: #fff;
 	padding: 32px;
+	width: 100%;
 `;
 
 export default MyReferrals;

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { shortenAddress } from '@/utils/helpers';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
 	const { open: openConnectModal } = useWeb3Modal();
@@ -13,6 +14,9 @@ const Header = () => {
 	const handleConnect = () => {
 		openConnectModal && openConnectModal();
 	};
+	const router = usePathname();
+	const isDashboard = router === '/';
+	const isRewards = router === '/rewards';
 
 	return (
 		<Wrapper>
@@ -27,8 +31,12 @@ const Header = () => {
 				</Logo>
 			</Link>
 			<Menus>
-				<Menu>Dashboard</Menu>
-				<Menu>Rewards</Menu>
+				<Link href='/'>
+					<Menu isActive={isDashboard}>Dashboard</Menu>
+				</Link>
+				<Link href='/rewards'>
+					<Menu isActive={isRewards}>Rewards</Menu>
+				</Link>
 				<Menu>How it works</Menu>
 			</Menus>
 			{address && chain?.id ? (
@@ -81,12 +89,12 @@ const Address = styled.div`
 	}
 `;
 
-const Menu = styled.div`
+const Menu = styled.div<{ isActive?: boolean }>`
 	cursor: pointer;
 	padding: 12px;
-	color: #747d8c;
+	color: ${({ isActive }) => (isActive ? '#FF4757' : '#747d8c')};
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 700;
 	line-height: normal;
 `;
 

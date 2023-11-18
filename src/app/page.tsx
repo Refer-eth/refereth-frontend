@@ -25,6 +25,7 @@ const Up = styled.div`
 `;
 
 const Wrapper = styled.div`
+	max-width: 1240px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
