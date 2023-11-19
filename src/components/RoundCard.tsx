@@ -71,7 +71,7 @@ const RoundCard: FC<IProps> = props => {
 					/>
 				</Claimed>
 			) : (
-				<Button text='Claim Rewards' />
+				<Button text='Claim Rewards' fullWidth />
 			)}
 		</Wrapper>
 	);

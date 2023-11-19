@@ -2,24 +2,28 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { FlexCenter } from '@/components/styled-components/Flex';
 
-const Button = (props: { text: string; icon?: string }) => {
-	const { text, icon } = props;
+const Button = (props: {
+	text: string;
+	icon?: string;
+	fullWidth?: boolean;
+}) => {
+	const { text, icon, fullWidth } = props;
 	return (
-		<Wrapper>
+		<Wrapper fullWidth={fullWidth}>
 			{icon && <Image src={icon} alt='copy' width={18} height={18} />}
 			{text}
 		</Wrapper>
 	);
 };
 
-const Wrapper = styled(FlexCenter)`
+const Wrapper = styled(FlexCenter)<{ fullWidth?: boolean }>`
 	background: #ff4757;
 	padding: 10px 24px;
 	border-radius: 100px;
 	color: white;
 	gap: 8px;
 	cursor: pointer;
-	width: fit-content;
+	width: ${({ fullWidth }) => (fullWidth ? '100%' : 'fit-content')};
 `;
 
 export default Button;

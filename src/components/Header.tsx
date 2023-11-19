@@ -120,6 +120,7 @@ const Wrapper = styled.header`
 	height: 107px;
 	top: 0;
 	position: fixed;
+	z-index: 1050;
 `;
 
 export default Header;
