@@ -6,10 +6,11 @@ const Button = (props: {
 	text: string;
 	icon?: string;
 	fullWidth?: boolean;
+	onClick?: () => void;
 }) => {
-	const { text, icon, fullWidth } = props;
+	const { text, icon, fullWidth, onClick } = props;
 	return (
-		<Wrapper fullWidth={fullWidth}>
+		<Wrapper onClick={() => onClick && onClick()} fullWidth={fullWidth}>
 			{icon && <Image src={icon} alt='copy' width={18} height={18} />}
 			{text}
 		</Wrapper>
